@@ -8,4 +8,3 @@ alias dmux=$install_path'/dev-tmux.sh'
 
 work_path='Workspace/xe2ez'
 alias devcd='cd ~/'$work_path
-alias vpn=/opt/cisco/anyconnect/bin/vpn
