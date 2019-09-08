@@ -2,7 +2,10 @@
 
 install_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-programs='tmux vim sshpass git ctags htop'
+# Programs on apt to install
+# TODO: Add packages with PPAs like google-chrome
+# TODO: Add packages that install with snap like spotify
+programs='tmux vim sshpass git ctags htop snapd'
 
 function install_progs {
 	echo "I'm installing programs"
