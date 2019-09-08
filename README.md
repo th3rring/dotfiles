@@ -1,5 +1,4 @@
   # Dotfiles for Personal Setup #
-
-  <pre>
-  git clone git@github.com:th3rring/dotfiles.git ~/.config/
-   </pre>
+<pre>
+git clone git@github.com:th3rring/dotfiles.git ~/.config/dotfiles
+</pre>
