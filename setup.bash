@@ -8,3 +8,9 @@ alias dmux=$install_path'/dev-tmux.sh'
 
 work_path='Workspace/xe2ez'
 alias devcd='cd ~/'$work_path
+
+# For the Rice VPN
+if [ -d "/opt/cisco/anyconnect/bin/vpn" ]
+then
+	alias vpn=/opt/cisco/anyconnect/bin/vpn
+fi

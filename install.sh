@@ -1,5 +1,7 @@
 #!/bin/bash
 
+install_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 programs='tmux vim sshpass git ctags htop'
 
 function install_progs {
@@ -31,16 +33,15 @@ rm -rf nerd-fonts
 echo 'Installing Vundle and VIM plugins...'
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 rm -f ~/.vimrc
-ln -s $PWD/vimrc ~/.vimrc
+ln -s $install_path/vimrc ~/.vimrc
 vim +PluginInstall +qall
 
 # Install tmux params
 echo 'Installing Tmux...'
 git clone https://github.com/samoshkin/tmux-config.git
 ./tmux-config/install.sh
-rm -rf tmux-config
 rm -f ~/.tmux.conf
-ln -s $PWD/tmux.conf ~/.tmux.conf
+ln -s $install_path/tmux.conf ~/.tmux.conf
 
 # Add bashrc source
 echo 'Installing commands...'
@@ -54,7 +55,6 @@ function install_vpn {
 		echo 'Not running as root, please authenticate.'
 	fi
 	sudo ./anyconnect-linux64-4.7.00136/vpn/vpn_install.sh
-	echo 'alias vpn='/opt/cisco/anyconnect/bin/vpn'' >> setup.bash
 	rm -rf anyconnect-linux64-4.7.00136
 }
 while true; do
