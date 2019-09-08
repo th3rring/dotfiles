@@ -1,8 +1,9 @@
 #!/bin/bash
+# Thomas Herring
+
+printf '###### Setting up preferences ######\n\n\n'
 
 install_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-# TODO: Add function to ask for user input and make each step optional
 
 prompt_user () {
 while true; do
@@ -13,16 +14,12 @@ while true; do
         * ) echo "Please answer yes or no.";;
     esac
 done
-
 }
 
 # Programs on apt to install
 # TODO: Add packages with PPAs like google-chrome
 # TODO: Add packages that install with snap like spotify
 programs='tmux vim sshpass git ctags htop snapd'
-
-printf '###### Setting up preferences ######\n\n\n'
-
 install_progs () {
 	echo "Installing programs..."
 	if [ $USER != 'root' ]
@@ -31,7 +28,6 @@ install_progs () {
 	fi
 	sudo apt install $programs
 }
-
 prompt_user install_progs "Would you like to install workspace programs?"
 
 # Add nerdfont install
