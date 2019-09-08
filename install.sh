@@ -2,6 +2,8 @@
 
 install_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+# TODO: Add function to ask for user input and make each step optional
+
 # Programs on apt to install
 # TODO: Add packages with PPAs like google-chrome
 # TODO: Add packages that install with snap like spotify
@@ -26,6 +28,7 @@ while true; do
     esac
 done
 
+# TODO: Make this installation optional, it's huge
 # Add nerdfont install
 echo 'Installing Nerdfonts...'
 git clone https://github.com/ryanoasis/nerd-fonts.git
@@ -37,6 +40,7 @@ echo 'Installing Vundle and VIM plugins...'
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 rm -f ~/.vimrc
 ln -s $install_path/vimrc ~/.vimrc
+# TODO: Compile YCM backend before installing plugins
 vim +PluginInstall +qall
 
 # Install tmux params
