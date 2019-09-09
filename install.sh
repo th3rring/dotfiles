@@ -16,19 +16,44 @@ while true; do
 done
 }
 
-# Programs on apt to install
-# TODO: Add packages with PPAs like google-chrome
-# TODO: Add packages that install with snap like spotify
-programs='tmux vim sshpass git ctags htop snapd'
-install_progs () {
-	echo "Installing programs..."
+check_root () {
 	if [ $USER != 'root' ]
 	then
 		echo 'Not running as root, please authenticate.'
 	fi
-	sudo apt install $programs
 }
-prompt_user install_progs "Would you like to install workspace programs?"
+
+# Programs on apt to install
+apt_programs='tmux vim sshpass git ctags htop snapd clang cmake steam-installer'
+install_apt_progs () {
+	echo "Installing apt programs..."
+	check_root
+	sudo apt install $apt_programs
+}
+prompt_user install_apt_progs "Would you like to install apt programs?"
+
+# Programs on snap to install
+snap_programs='docker discord libreoffice spotify gimp'
+install_snap_progs () {
+	echo "Installing apt programs..."
+	check_root
+	sudo snap install $snap_programs
+
+	# Have to specify --classic packages here
+	sudo snap install android-studio --classic
+	sudo snap install slack --classic
+}
+prompt_user install_snap_progs "Would you like to install snap programs?"
+
+# Install Chrome
+install_chrome () {
+	echo "Installing Google Chrome..."
+	wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+	check_root
+	sudo dpkg -i google-chrome-stable_current_amd64.deb
+	rm -f google-chrome-stable_current_amd64.deb
+}
+prompt_user install_chrome "Would you like to install Google Chrome?"
 
 # Add nerdfont install
 install_nerdfonts () {
@@ -45,8 +70,8 @@ install_vim_plugins () {
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 	rm -f ~/.vimrc
 	ln -s $install_path/vimrc ~/.vimrc
-	# TODO: Compile YCM backend before installing plugins
 	vim +PluginInstall +qall
+	python3 ~/.vim/bundle/YouCompleteMe/install.py --clang-completer
 }
 prompt_user install_vim_plugins "Would you like to install vim plugins?"
 
@@ -71,13 +96,10 @@ prompt_user install_commands "Would you like to install commands?"
 install_vpn () {
 	echo "Installing Rice vpn..."
 	tar -xvf anyconnect.tar.gz
-	if [ $USER != 'root' ]
-	then
-		echo 'Not running as root, please authenticate.'
-	fi
+	check_root
 	sudo ./anyconnect-linux64-4.7.00136/vpn/vpn_install.sh
 	rm -rf anyconnect-linux64-4.7.00136
 }
 prompt_user install_vpn "Would you like to install Rice vpn?"
 
-echo '###### Done setup! ######'
+printf '\n\n###### Done setup! ######\n'

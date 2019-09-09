@@ -20,7 +20,7 @@ Plugin 'kien/ctrlp.vim'
 " Programming
 Plugin 'Townk/vim-autoclose'
 Plugin 'vim-syntastic/syntastic'
-Plugin 'ycm-core/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 
 " Theme/Interface
 Plugin 'vim-airline/vim-airline'
