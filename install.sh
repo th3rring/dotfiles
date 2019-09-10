@@ -102,4 +102,5 @@ install_vpn () {
 }
 prompt_user install_vpn "Would you like to install Rice vpn?"
 
+# TODO: Add section that makes workspace folder and git clones default scripts
 printf '\n\n###### Done setup! ######\n'
