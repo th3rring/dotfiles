@@ -1,4 +1,5 @@
 #!/bin/bash
+# Make this variable local to this file so it's not an env var
 install_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 KRL_MACHINE='megamedes'
@@ -40,3 +41,5 @@ preexec() {
     #echo DISPLAY = $DISPLAY, display.txt = `cat ~/.display.txt`, STY = $STY, TMUX = $TMUX
 }
 trap 'preexec' DEBUG
+
+alias devupdate='git -C '$install_path' pull'
