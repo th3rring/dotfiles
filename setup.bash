@@ -1,8 +1,8 @@
 #!/bin/bash
 install_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-krl_machine='megamedes'
-alias devssh='sshpass -p "Qrioqrio9" ssh -o StrictHostKeyChecking=no therring@'$krl_machine'.cs.rice.edu'
+KRL_MACHINE='megamedes'
+alias devssh='sshpass -p "Qrioqrio9" ssh -o StrictHostKeyChecking=no therring@'$KRL_MACHINE'.cs.rice.edu -Y'
 
 alias dmux=$install_path'/dev-tmux.sh'
 
