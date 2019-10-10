@@ -83,10 +83,10 @@ map <C-n> :NERDTreeToggle<CR>
 map <C-m> :TagbarToggle<CR>
 
 
- let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeQuitOnOpen = 1
 
 noremap <Leader>y "*y
 noremap <Leader>p "*p
 noremap <Leader>Y "+y
+noremap <Leader>u :echo "Hi"
 noremap <Leader>P "+p
-
