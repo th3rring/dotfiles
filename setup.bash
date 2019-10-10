@@ -11,9 +11,12 @@ work_path='Workspace/xe2ez'
 alias devcd='cd ~/'$work_path
 
 # For the Rice VPN
-if [ -d "/opt/cisco/anyconnect/bin/vpn" ]
+# TODO: Didn't seem to work
+echo "hi"
+if [ -d "/opt/cisco/anyconnect" ]
 then
 	alias vpn=/opt/cisco/anyconnect/bin/vpn
+	echo "Aliased VPN"
 fi
 
 # Copied from https://dchua.com/2014/07/15/x11-forwarding-over-remote-ssh-tmux/
