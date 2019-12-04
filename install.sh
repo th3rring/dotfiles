@@ -79,7 +79,7 @@ install_vim_plugins () {
 	rm -f ~/.vimrc
 	ln -s $install_path/vimrc ~/.vimrc
 	vim +PluginInstall +qall
-	python3 ~/.vim/bundle/YouCompleteMe/install.py --clang-completer
+	python3 ~/.vim/bundle/YouCompleteMe/install.py --clangd-completer
 }
 prompt_user install_vim_plugins "Would you like to install vim plugins?"
 

@@ -1,3 +1,6 @@
 Added options to /etc/modprobe.d/i915.conf to save more power on intel gpu
 Added /etc/systemd/system/undervolt.service to control cpu undervolt
-TLP config to limit cpu settings on battery
+TLP config at /etc/default/tlp to limit cpu settings on battery
+Installed Linux 5.3 http://ubuntuhandbook.org/index.php/2019/09/install-linux-kernel-5-3-ubuntu-linux-mint/
+Followed docx instructions from https://wiki.archlinux.org/index.php/Lenovo_ThinkPad_X1_Carbon_(Gen_7)#S3_Suspend_Bug_with_Bluetooth_Devices 
+Added configuration for trackpoint configuration at boot. https://wiki.archlinux.org/index.php/TrackPoint
