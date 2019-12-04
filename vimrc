@@ -82,8 +82,10 @@ let g:colorizer_auto_color = 1
 map <C-n> :NERDTreeToggle<CR>
 map <C-m> :TagbarToggle<CR>
 
-
 let g:NERDTreeQuitOnOpen = 1
+
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_key_list_stop_completion = ['<C-y>', '<Enter>']
 
 noremap <Leader>y "*y
 noremap <Leader>p "*p
