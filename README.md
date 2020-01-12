@@ -7,6 +7,7 @@ git clone git@github.com:th3rring/dotfiles.git ~/.config/dotfiles
   # TODO: #
   * [Fingerprint sensor](https://forums.lenovo.com/t5/Other-Linux-Discussions/How-To-Configure-X1-Carbon-Gen-7-on-Debian-FingerPrint-4G-Modem/td-p/4550327/page/4)
   * [Microphone and audio driver](https://bbs.archlinux.org/viewtopic.php?pid=1868200#p1868200)
+  * Face recognition login not working
   * Reduce trackpoint sensitivity
   * Desktop notifications lasting too long
   * Horizontal lines in the terminal
