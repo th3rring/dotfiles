@@ -11,3 +11,6 @@ git clone git@github.com:th3rring/dotfiles.git ~/.config/dotfiles
   * [Facial recognition IR blasters not working](https://github.com/boltgolt/howdy/issues/269)
   * Desktop notifications lasting too long
   * Horizontal lines in the terminal
+  
+# Config information #
+  * Added IR emitter code from [here](https://github.com/PetePriority/chicony-ir-toggle.git).
