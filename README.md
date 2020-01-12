@@ -9,3 +9,4 @@ git clone git@github.com:th3rring/dotfiles.git ~/.config/dotfiles
   * [Microphone and audio driver](https://bbs.archlinux.org/viewtopic.php?pid=1868200#p1868200)
   * Reduce trackpoint sensitivity
   * [Facial recognition](https://github.com/boltgolt/howdy)
+  * Desktop notifications lasting too long
