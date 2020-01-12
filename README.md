@@ -10,3 +10,4 @@ git clone git@github.com:th3rring/dotfiles.git ~/.config/dotfiles
   * Reduce trackpoint sensitivity
   * [Facial recognition](https://github.com/boltgolt/howdy)
   * Desktop notifications lasting too long
+  * Horizontal lines in the terminal
