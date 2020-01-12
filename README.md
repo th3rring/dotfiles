@@ -9,7 +9,7 @@ git clone git@github.com:th3rring/dotfiles.git ~/.config/dotfiles
   * [Microphone and audio driver](https://bbs.archlinux.org/viewtopic.php?pid=1868200#p1868200)
   * Face recognition login not working
   * Reduce trackpoint sensitivity
-  * Desktop notifications lasting too long
+  * [Desktop notifications lasting too long](https://forum.kde.org/viewtopic.php?f=289&t=160839)
   * Horizontal lines in the terminal
   
 # Config information #
