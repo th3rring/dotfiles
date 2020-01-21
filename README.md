@@ -11,7 +11,8 @@ git clone git@github.com:th3rring/dotfiles.git ~/.config/dotfiles
   * Reduce trackpoint sensitivity
   * [Desktop notifications lasting too long](https://forum.kde.org/viewtopic.php?f=289&t=160839)
   * Horizontal lines in the terminal
+  * Inconsistent facial recognition, removed Howdy
   
 # Config information #
-  * Added IR emitter code from [here](https://github.com/PetePriority/chicony-ir-toggle.git).
+  * UNINSTALLED - Added IR emitter code from [here](https://github.com/PetePriority/chicony-ir-toggle.git).
     * [Facial recognition from here](https://github.com/boltgolt/howdy)
