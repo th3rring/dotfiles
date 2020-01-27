@@ -44,3 +44,4 @@ preexec() {
 trap 'preexec' DEBUG
 
 alias devupdate='git -C '$install_path' pull'
+alias devconfig='cd '$install_path
