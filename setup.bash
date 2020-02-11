@@ -7,6 +7,9 @@ alias devssh='sshpass -p "Qrioqrio9" ssh -o StrictHostKeyChecking=no therring@'$
 
 alias dmux=$install_path'/dev-tmux.sh'
 
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
 work_path='Workspace/xe2ez'
 alias devcd='cd ~/'$work_path
 
@@ -44,3 +47,4 @@ preexec() {
 trap 'preexec' DEBUG
 
 alias devupdate='git -C '$install_path' pull'
+
