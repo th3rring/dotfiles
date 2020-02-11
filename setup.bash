@@ -2,7 +2,7 @@
 # Make this variable local to this file so it's not an env var
 install_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-KRL_MACHINE='megamedes'
+KRL_MACHINE='oceanus'
 alias devssh='sshpass -p "Qrioqrio9" ssh -o StrictHostKeyChecking=no therring@'$KRL_MACHINE'.cs.rice.edu -Y'
 
 alias dmux=$install_path'/dev-tmux.sh'
@@ -47,4 +47,8 @@ preexec() {
 trap 'preexec' DEBUG
 
 alias devupdate='git -C '$install_path' pull'
+<<<<<<< HEAD
 
+=======
+alias devconfig='cd '$install_path
+>>>>>>> 7e1f101ccc9fa4ff1800467f696423a8c0a81d1d
