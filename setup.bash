@@ -3,15 +3,11 @@
 install_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 KRL_MACHINE='oceanus'
-alias devssh='sshpass -p "Qrioqrio9" ssh -o StrictHostKeyChecking=no therring@'$KRL_MACHINE'.cs.rice.edu -Y'
-
-alias dmux=$install_path'/dev-tmux.sh'
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-work_path='Workspace/xe2ez'
-alias devcd='cd ~/'$work_path
+work_path='Workspace'
 
 # For the Rice VPN
 # TODO: Didn't seem to work
@@ -46,9 +42,8 @@ preexec() {
 }
 trap 'preexec' DEBUG
 
+alias devssh='sshpass -p "Qrioqrio9" ssh -o StrictHostKeyChecking=no therring@'$KRL_MACHINE'.cs.rice.edu -Y'
+alias dmux=$install_path'/dev-tmux.sh'
 alias devupdate='git -C '$install_path' pull'
-<<<<<<< HEAD
-
-=======
 alias devconfig='cd '$install_path
->>>>>>> 7e1f101ccc9fa4ff1800467f696423a8c0a81d1d
+alias devcd='cd ~/'$work_path
