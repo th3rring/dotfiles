@@ -92,3 +92,8 @@ noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>u :echo "Hi"
 noremap <Leader>P "+p
+
+" Set tab settings
+set expandtab
+set shiftwidth=2
+set softtabstop=2
