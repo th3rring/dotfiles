@@ -1,5 +1,6 @@
 #!/bin/sh
-tmux new-session -n 'bash' -d 'ranger'
+#tmux new-session -n 'bash' -d 'ranger'
+tmux new-session -n 'bash' -d
 tmux split-window -v 
 tmux split-window -h
 tmux split-window -h -t 1
