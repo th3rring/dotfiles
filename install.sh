@@ -75,7 +75,9 @@ install_suckless () {
         git -C $picom_loc submodule update --init --recursive
         meson --buildtype=release $picom_loc $picom_loc/build
         ninja -C $picom_loc/build
+        ninja -C $picom_loc/build install
 
+        ln -sfn "$INSTALL_PATH/picom.conf" $picom_loc
 
         bash $INSTALL_PATH/statusbar/link.sh
 }
