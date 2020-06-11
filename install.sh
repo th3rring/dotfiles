@@ -1,10 +1,16 @@
 #!/bin/bash
-# Thomas Herring
+# Thomas Herring 2020.
 
 printf '###### Setting up preferences ######\n\n\n'
 
 INSTALL_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
+USER_HOME=$HOME
+
+# Make sure user path is correct.
+if [ $USER = 'root' ]
+then
+  USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
+fi
 
 prompt_user () {
 while true; do
