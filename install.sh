@@ -36,7 +36,7 @@ prompt_user install_apt_progs "Would you like to install apt programs?"
 pip_programs='ranger-fm'
 install_pip_progs () {
 	echo "Installing pip programs..."
-	pip install $pip_programs --user
+	pip3 install $pip_programs --user
 }
 prompt_user install_pip_progs "Would you like to install pip programs?"
 

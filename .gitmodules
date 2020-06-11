@@ -1,0 +1,6 @@
+[submodule "suckless"]
+	path = suckless
+	url = git@github.com:th3rring/suckless.git
+[submodule "statusbar"]
+	path = statusbar
+	url = git@github.com:th3rring/statusbar.git
