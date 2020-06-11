@@ -3,7 +3,8 @@
 
 printf '###### Setting up preferences ######\n\n\n'
 
-install_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+INSTALL_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+USER_HOME=$(getent passwd $SUDO_USER | cut -d: -f6)
 
 prompt_user () {
 while true; do
@@ -24,7 +25,7 @@ check_root () {
 }
 
 # Programs on apt to install
-apt_programs='tmux vim sshpass git ctags htop snapd clang cmake steam-installer'
+apt_programs='tmux vim sshpass git ctags htop snapd clang cmake steam-installer meson ninja-build'
 install_apt_progs () {
 	echo "Installing apt programs..."
 	check_root
@@ -55,13 +56,28 @@ prompt_user install_snap_progs "Would you like to install snap programs?"
 
 install_suckless () {
         echo "Installing Suckless tools..."
-        git submodule update --init --recursive
+        git -C $INSTALL_PATH submodule update --init --recursive
         check_root
-        sudo apt install suckless-tools dwm
-        sudo make -C ./suckless/dwm/ clean install
-        sudo make -C ./suckless/dwmblocks/ clean install
-        sudo make -C ./suckless/st/ clean install
-        ./statusbar/link.sh
+        sudo apt install suckless-tools dwm libx11-dev libxft-dev libxinerama-dev nitrogen
+        sudo make -C "$INSTALL_PATH/suckless/dwm" clean install
+        sudo make -C "$INSTALL_PATH/suckless/dwmblocks" clean install
+        sudo make -C "$INSTALL_PATH/suckless/st" clean install
+
+        ln -sfn "$INSTALL_PATH/suckless/dwm" "$USER_HOME/.config/"
+        ln -sfn "$INSTALL_PATH/suckless/dwmblocks" "$USER_HOME/.config/"
+        ln -sfn "$INSTALL_PATH/suckless/st" "$USER_HOME/.config/"
+
+        # Install picom.
+        sudo apt install libxext-dev libxcb1-dev libxcb-damage0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-render-util0-dev libxcb-render0-dev libxcb-randr0-dev libxcb-composite0-dev libxcb-image0-dev libxcb-present-dev libxcb-xinerama0-dev libxcb-glx0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl1-mesa-dev  libpcre3-dev libevdev-dev uthash-dev libev-dev libx11-xcb-dev
+
+        picom_loc=$USER_HOME/.config/picom
+        git clone https://github.com/yshui/picom.git $picom_loc
+        git -C $picom_loc submodule update --init --recursive
+        meson --buildtype=release $picom_loc $picom_loc/build
+        ninja -C $picom_loc/build
+
+
+        bash $INSTALL_PATH/statusbar/link.sh
 }
 prompt_user install_suckless "Would you like to install Suckless tools?"
 
@@ -78,20 +94,28 @@ prompt_user install_chrome "Would you like to install Google Chrome?"
 # Add nerdfont install
 install_nerdfonts () {
 	echo 'Installing Nerdfonts...'
-	git clone https://github.com/ryanoasis/nerd-fonts.git
-	./nerd-fonts/install.sh
-	rm -rf nerd-fonts
+	git clone https://github.com/ryanoasis/nerd-fonts.git $INSTALL_PATH/nerd-fonts
+
+        # If we're running as root, make sure to install as user.
+	if [ $USER = 'root' ]
+	then
+          sudo -u $SUDO_USER bash $INSTALL_PATH/nerd-fonts/install.sh
+        else
+          bash $INSTALL_PATH/nerd-fonts/install.sh
+	fi
+
+        rm -rf $INSTALL_PATH/nerd-fonts
 }
 prompt_user install_nerdfonts "Would you like to install Nerdfonts?"
 
 # Install Vundle and install plugins
 install_vim_plugins () {
 	echo 'Installing Vundle and VIM plugins...'
-	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-	rm -f ~/.vimrc
-	ln -s $install_path/vimrc ~/.vimrc
+	git clone https://github.com/VundleVim/Vundle.vim.git $USER_HOME/.vim/bundle/Vundle.vim
+	rm -f $USER_HOME/.vimrc
+	ln -s $INSTALL_PATH/vimrc $USER_HOME/.vimrc
 	vim +PluginInstall +qall
-	python3 ~/.vim/bundle/YouCompleteMe/install.py --clangd-completer
+	python3 $USER_HOME/.vim/bundle/YouCompleteMe/install.py --clangd-completer
 }
 prompt_user install_vim_plugins "Would you like to install vim plugins?"
 
@@ -100,15 +124,16 @@ install_tmux_plugins () {
 	echo 'Installing Tmux plugins...'
 	git clone https://github.com/samoshkin/tmux-config.git
 	./tmux-config/install.sh
-	rm -f ~/.tmux.conf
-	ln -s $install_path/tmux.conf ~/.tmux.conf
+	rm -f $USER_HOME/.tmux.conf
+	ln -s $INSTALL_PATH/tmux.conf $USER_HOME/.tmux.conf
 }
 prompt_user install_tmux_plugins "Would you like to install tmux plugins?"
 
 # Add bashrc source
 install_commands () {
 	echo 'Installing commands...'
-	echo 'source '$PWD'/setup.bash' >> ~/.bashrc
+	echo 'source '$INSTALL_PATH'/setup.bash' >> $USER_HOME/.bashrc
+	source $USER_HOME/.bashrc
 }
 prompt_user install_commands "Would you like to install commands?"
 
