@@ -53,6 +53,18 @@ install_snap_progs () {
 }
 prompt_user install_snap_progs "Would you like to install snap programs?"
 
+install_suckless () {
+        echo "Installing Suckless tools..."
+        git submodule update --init --recursive
+        check_root
+        sudo apt install suckless-tools dwm
+        sudo make -C ./suckless/dwm/ clean install
+        sudo make -C ./suckless/dwmblocks/ clean install
+        sudo make -C ./suckless/st/ clean install
+        ./statusbar/link.sh
+}
+prompt_user install_suckless "Would you like to install Suckless tools?"
+
 # Install Chrome
 install_chrome () {
 	echo "Installing Google Chrome..."
