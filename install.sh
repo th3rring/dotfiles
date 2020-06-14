@@ -117,6 +117,7 @@ install_nerdfonts () {
 prompt_user install_nerdfonts "Would you like to install Nerdfonts?"
 
 # Install Vundle and install plugins
+# Moved to Neovim, commenting out this.
 install_vim_plugins () {
 	echo 'Installing Vundle and VIM plugins...'
 	git clone https://github.com/VundleVim/Vundle.vim.git $USER_HOME/.vim/bundle/Vundle.vim
@@ -125,7 +126,13 @@ install_vim_plugins () {
 	vim +PluginInstall +qall
 	python3 $USER_HOME/.vim/bundle/YouCompleteMe/install.py --clangd-completer
 }
-prompt_user install_vim_plugins "Would you like to install vim plugins?"
+# prompt_user install_vim_plugins "Would you like to install vim plugins?"
+
+install_neovim () {
+  echo 'Installing Neovim from personal repo...'
+  bash <(curl -s https://raw.githubusercontent.com/ChristianChiarulli/nvim/master/utils/install.sh)
+}
+prompt_user install_neovim "Would you like to install neovim?"
 
 # Install tmux params
 install_tmux_plugins () {
