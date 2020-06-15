@@ -136,6 +136,7 @@ install_neovim () {
 prompt_user install_neovim "Would you like to install neovim?"
 
 # Install tmux params
+# Switched to using DWM and neovim so this isn't necessary.
 install_tmux_plugins () {
 	echo 'Installing Tmux plugins...'
 	git clone https://github.com/samoshkin/tmux-config.git
@@ -143,7 +144,7 @@ install_tmux_plugins () {
 	rm -f $USER_HOME/.tmux.conf
 	ln -s $INSTALL_PATH/tmux.conf $USER_HOME/.tmux.conf
 }
-prompt_user install_tmux_plugins "Would you like to install tmux plugins?"
+# prompt_user install_tmux_plugins "Would you like to install tmux plugins?"
 
 # Add bashrc source
 install_commands () {
@@ -152,6 +153,12 @@ install_commands () {
 	source $USER_HOME/.bashrc
 }
 prompt_user install_commands "Would you like to install commands?"
+
+install_workspace () {
+  echo 'Making workspace...'
+  mkdir $USER_HOME/Workspace
+}
+prompt_user install_workspace "Would you like to make a workspace?"
 
 # Ask to install vpn
 install_vpn () {
