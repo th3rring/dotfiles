@@ -31,7 +31,7 @@ check_root () {
 }
 
 # Programs on apt to install
-apt_programs='tmux vim sshpass git ctags htop snapd clang cmake steam-installer meson ninja-build curl'
+apt_programs='tmux vim sshpass git ctags htop snapd clang cmake steam-installer meson ninja-build curl python3-pip'
 install_apt_progs () {
 	echo "Installing apt programs..."
 	check_root
