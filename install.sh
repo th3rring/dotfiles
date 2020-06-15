@@ -130,6 +130,7 @@ install_vim_plugins () {
 
 install_neovim () {
   echo 'Installing Neovim from personal repo...'
+  sudo apt install neovim
   bash <(curl -s https://raw.githubusercontent.com/th3rring/nvim/master/utils/install.sh)
 }
 prompt_user install_neovim "Would you like to install neovim?"
