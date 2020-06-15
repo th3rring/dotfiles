@@ -31,7 +31,7 @@ check_root () {
 }
 
 # Programs on apt to install
-apt_programs='tmux vim sshpass git ctags htop snapd clang cmake steam-installer meson ninja-build'
+apt_programs='tmux vim sshpass git ctags htop snapd clang cmake steam-installer meson ninja-build curl'
 install_apt_progs () {
 	echo "Installing apt programs..."
 	check_root
@@ -130,7 +130,7 @@ install_vim_plugins () {
 
 install_neovim () {
   echo 'Installing Neovim from personal repo...'
-  bash <(curl -s https://raw.githubusercontent.com/ChristianChiarulli/nvim/master/utils/install.sh)
+  bash <(curl -s https://raw.githubusercontent.com/th3rring/nvim/master/utils/install.sh)
 }
 prompt_user install_neovim "Would you like to install neovim?"
 

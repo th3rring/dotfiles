@@ -42,7 +42,7 @@ preexec() {
 }
 trap 'preexec' DEBUG
 
-alias devssh='sshpass -p "Qrioqrio9" ssh -o StrictHostKeyChecking=no therring@'$KRL_MACHINE'.cs.rice.edu -Y'
+# alias devssh='sshpass -p "*******" ssh -o StrictHostKeyChecking=no therring@'$KRL_MACHINE'.cs.rice.edu -Y'
 alias dmux=$install_path'/dev-tmux.sh'
 alias devupdate='git -C '$install_path' pull && sudo bash '$install_path'/suckless/update.sh && bash '$install_path'/statusbar/link.sh'
 alias devinstall='sudo bash '$install_path'/install.sh'
