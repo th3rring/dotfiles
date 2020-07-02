@@ -48,7 +48,7 @@ install_pip_progs () {
 prompt_user install_pip_progs "Would you like to install pip programs?"
 
 # Programs on snap to install
-snap_programs='docker discord libreoffice spotify gimp'
+snap_programs='discord libreoffice spotify gimp'
 install_snap_progs () {
 	echo "Installing apt programs..."
 	check_root
