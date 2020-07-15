@@ -48,3 +48,4 @@ alias devupdate='git -C '$install_path' pull && sudo bash '$install_path'/suckle
 alias devinstall='sudo bash '$install_path'/install.sh'
 alias devconfig='cd '$install_path
 alias devcd='cd ~/'$work_path
+alias devimg='/home/therring/Workspace/builder/gui-docker -it --rm th3rring/builder:dart bash'
