@@ -4,14 +4,11 @@ install_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 KRL_MACHINE='oceanus'
 
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 
-work_path='Workspace'
-export WORKSPACE_PATH='/home/therring/Workspace'
 
 # For the Rice VPN
-# TODO: Didn't seem to work
 if [ -d "/opt/cisco/anyconnect" ]
 then
 	alias vpn=/opt/cisco/anyconnect/bin/vpn
@@ -44,9 +41,8 @@ preexec() {
 trap 'preexec' DEBUG
 
 # alias devssh='sshpass -p "*******" ssh -o StrictHostKeyChecking=no therring@'$KRL_MACHINE'.cs.rice.edu -Y'
-alias dmux=$install_path'/dev-tmux.sh'
+# alias dmux=$install_path'/dev-tmux.sh'
 alias devupdate='git -C '$install_path' pull && sudo bash '$install_path'/suckless/update.sh && bash '$install_path'/statusbar/link.sh'
-alias devinstall='sudo bash '$install_path'/install.sh'
-alias devconfig='cd '$install_path
-alias devimg='/home/therring/Workspace/builder/gui-docker -it --rm th3rring/builder:dart bash'
-source $install_path/devcd.sh
+alias devdotfiles='cd '$install_path
+source $install_path/scripts/devcd.sh
+source $install_path/scripts/devimg.sh

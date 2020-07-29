@@ -8,7 +8,6 @@ if [[ -z "${WORKSPACE_PATH}" ]]; then
 fi
 
 cd "$WORKSPACE_PATH/$1" 
-
 }
 
 # _ls () {

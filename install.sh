@@ -128,12 +128,22 @@ install_vim_plugins () {
 }
 # prompt_user install_vim_plugins "Would you like to install vim plugins?"
 
+# Install Neovim and plugins from personal repo.
 install_neovim () {
   echo 'Installing Neovim from personal repo...'
   sudo apt install neovim
   bash <(curl -s https://raw.githubusercontent.com/th3rring/nvim/master/utils/install.sh)
 }
 prompt_user install_neovim "Would you like to install neovim?"
+
+# Install docker using convenience scripts.
+# Check if this requires sudo access.
+install_docker () {
+  echo 'Installing docker using convenience script...'
+  bash <(curl -s https://get.docker.com)
+}
+prompt_user install_docker "Would you like to install docker?"
+
 
 # Install tmux params
 # Switched to using DWM and neovim so this isn't necessary.
@@ -146,6 +156,21 @@ install_tmux_plugins () {
 }
 # prompt_user install_tmux_plugins "Would you like to install tmux plugins?"
 
+install_workspace () {
+  echo 'Making workspace...'
+  mkdir $USER_HOME/Workspace
+  echo "export BUILDER_PATH=$USER_HOME/Workspace" >> $USER_HOME/.bashrc
+}
+prompt_user install_workspace "Would you like to make a workspace?"
+
+# Install builder in workspace.
+install_builder () {
+  echo 'Installing builder...'
+  git clone git@github.com:th3rring/builder.git $USER_HOME/Workspace/builder
+  docker pull th3rring/builder -a
+  echo "export BUILDER_PATH=$USER_HOME/Workspace/builder" >> $USER_HOME/.bashrc
+}
+
 # Add bashrc source
 install_commands () {
 	echo 'Installing commands...'
@@ -153,12 +178,6 @@ install_commands () {
 	source $USER_HOME/.bashrc
 }
 prompt_user install_commands "Would you like to install commands?"
-
-install_workspace () {
-  echo 'Making workspace...'
-  mkdir $USER_HOME/Workspace
-}
-prompt_user install_workspace "Would you like to make a workspace?"
 
 # Ask to install vpn
 install_vpn () {
