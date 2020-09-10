@@ -13,3 +13,6 @@ git clone git@github.com:th3rring/dotfiles.git ~/.config/dotfiles
 
 - UNINSTALLED - Added IR emitter code from [here](https://github.com/PetePriority/chicony-ir-toggle.git).
   - [Facial recognition from here](https://github.com/boltgolt/howdy)
+  
+# Pop!_OS Config
+- Use `sudo ifconfig enp4s0f2 up` to enable ethernet.
