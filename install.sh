@@ -136,6 +136,13 @@ install_neovim () {
 }
 prompt_user install_neovim "Would you like to install neovim?"
 
+# Install texlive for Neovim support.
+install_latex () {
+  echo 'Installing Latex...'
+  sudo apt install texlive
+}
+prompt_user install_latex "Would you like to install latex?"
+
 # Install docker using convenience scripts.
 # Check if this requires sudo access.
 install_docker () {
