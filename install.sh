@@ -177,6 +177,18 @@ install_builder () {
   docker pull th3rring/builder -a
   echo "export BUILDER_PATH=$USER_HOME/Workspace/builder" >> $USER_HOME/.bashrc
 }
+prompt_user install_builder "Would you like to install builder?"
+
+# Install cling interpreter in dotfiles directory.
+install_cling () {
+	echo 'Installing cling...'
+	echo 'Note: copying binaries for Ubuntu 20.04'
+	wget https://root.cern.ch/download/cling/cling_2020-09-08_ROOT-ubuntu2004.tar.bz2
+	tar -xvf cling_2020-09-08_ROOT-ubuntu2004.tar.bz2
+	rm -f cling_2020-09-08_ROOT-ubuntu2004.tar.bz2
+}
+prompt_user install_cling "Would you like to install cling?"
+
 
 # Add bashrc source
 install_commands () {
