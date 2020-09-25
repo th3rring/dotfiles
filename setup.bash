@@ -46,3 +46,6 @@ alias devupdate='git -C '$install_path' pull && sudo bash '$install_path'/suckle
 alias devdotfiles='cd '$install_path
 source $install_path/scripts/devcd.sh
 source $install_path/scripts/devimg.sh
+
+# Add Cling to path
+export PATH="$install_path/cling/bin:$PATH"
