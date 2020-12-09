@@ -13,6 +13,8 @@ git clone git@github.com:th3rring/dotfiles.git ~/.config/dotfiles
 
 - UNINSTALLED - Added IR emitter code from [here](https://github.com/PetePriority/chicony-ir-toggle.git).
   - [Facial recognition from here](https://github.com/boltgolt/howdy)
-  
-# Pop!_OS Config
+
+# Pop!\_OS Config
+
 - Use `sudo ifconfig enp4s0f2 up` to enable ethernet.
+- Had to change the controller mode in the bluetooth config file at /etc/bluetooth/main.conf.
