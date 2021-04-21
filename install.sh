@@ -31,7 +31,7 @@ check_root () {
 }
 
 # Programs on apt to install
-apt_programs='tmux vim sshpass git ctags htop clang cmake meson ninja-build curl python3-pip'
+apt_programs='tmux vim sshpass git  htop clang cmake meson ninja-build curl python3-pip'
 install_apt_progs () {
 	echo "Installing apt programs..."
 	check_root
@@ -166,7 +166,7 @@ install_tmux_plugins () {
 install_workspace () {
   echo 'Making workspace...'
   mkdir $USER_HOME/Workspace
-  echo "export BUILDER_PATH=$USER_HOME/Workspace" >> $USER_HOME/.bashrc
+  echo "export WORKSPACE_PATH=$USER_HOME/Workspace" >> $USER_HOME/.bashrc
 }
 prompt_user install_workspace "Would you like to make a workspace?"
 

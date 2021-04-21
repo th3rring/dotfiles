@@ -44,6 +44,7 @@ trap 'preexec' DEBUG
 # alias dmux=$install_path'/dev-tmux.sh'
 alias devupdate='git -C '$install_path' pull && sudo bash '$install_path'/suckless/update.sh && bash '$install_path'/statusbar/link.sh'
 alias devdotfiles='cd '$install_path
+alias devscripts='cd '$install_path/scripts
 source $install_path/scripts/devcd.sh
 source $install_path/scripts/devimg.sh
 
