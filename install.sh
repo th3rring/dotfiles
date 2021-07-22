@@ -129,10 +129,20 @@ install_vim_plugins () {
 # prompt_user install_vim_plugins "Would you like to install vim plugins?"
 
 # Install Neovim and plugins from personal repo.
+# install_neovim () {
+#   echo 'Installing Neovim from personal repo...'
+#   sudo apt install neovim
+#   bash <(curl -s https://raw.githubusercontent.com/th3rring/nvim/master/utils/install.sh)
+# }
+
 install_neovim () {
-  echo 'Installing Neovim from personal repo...'
-  sudo apt install neovim
-  bash <(curl -s https://raw.githubusercontent.com/th3rring/nvim/master/utils/install.sh)
+  echo 'Installing Neovim from latest release appimage...'
+  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+  chmod u+x nvim.appimage
+  ./nvim.appimage --appimage-extract
+  check_root
+  sudo mv squashfs-root
+  sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 }
 prompt_user install_neovim "Would you like to install neovim?"
 
