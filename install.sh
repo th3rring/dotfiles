@@ -1,5 +1,5 @@
 #!/bin/bash
-# Thomas Herring 2020.
+# Thomas Herring 2021.
 
 printf '###### Setting up preferences ######\n\n\n'
 
@@ -130,9 +130,16 @@ install_vim_plugins () {
 
 # Install Neovim and plugins from personal repo.
 install_neovim () {
-  echo 'Installing Neovim from personal repo...'
-  sudo apt install neovim
-  bash <(curl -s https://raw.githubusercontent.com/th3rring/nvim/master/utils/install.sh)
+  echo 'Installing Neovim 0.5 by moving app image to /usr/bin/nvim...'
+  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+  chmod u+x nvim.appimage
+  nvim.appimage --appimage-extract
+  check_root
+  sudo mv squashfs-root /
+  sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
+
+  echo 'Installing LunarVim from Github...'
+  bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 }
 prompt_user install_neovim "Would you like to install neovim?"
 
@@ -177,7 +184,7 @@ install_builder () {
   docker pull th3rring/builder -a
   echo "export BUILDER_PATH=$USER_HOME/Workspace/builder" >> $USER_HOME/.bashrc
 }
-prompt_user install_builder "Would you like to install builder?"
+# prompt_user install_builder "Would you like to install builder?"
 
 # Install cling interpreter in dotfiles directory.
 install_cling () {
@@ -187,7 +194,7 @@ install_cling () {
 	tar -xvf cling_2020-09-08_ROOT-ubuntu2004.tar.bz2
 	rm -f cling_2020-09-08_ROOT-ubuntu2004.tar.bz2
 }
-prompt_user install_cling "Would you like to install cling?"
+# prompt_user install_cling "Would you like to install cling?"
 
 
 # Add bashrc source
