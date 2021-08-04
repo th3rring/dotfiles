@@ -147,10 +147,19 @@ install_neovim () {
   echo 'Installing latest version of LunarVim...'
   # Install deps from LunarVim docs.
   sudo apt update
-  sudo apt install python3-pip python-dev python3-dev python3-pip
+  sudo apt install -y python3-pip python-dev python3-dev python3-pip
   bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 }
 prompt_user install_neovim "Would you like to install neovim?"
+
+install_lazygit () {
+  echo 'Installing Lazygit with Go...'
+  # check_root
+  sudo apt update
+  sudo apt install -y golang-go
+  go get github.com/jesseduffield/lazygit
+}
+prompt_user install_lazygit "Would you like to install lazygit?"
 
 # Install texlive for Neovim support.
 install_latex () {
