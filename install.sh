@@ -140,9 +140,15 @@ install_neovim () {
   curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
   chmod u+x nvim.appimage
   ./nvim.appimage --appimage-extract
-  check_root
-  sudo mv squashfs-root
+  # check_root
+  sudo mv squashfs-root /
   sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
+
+  echo 'Installing latest version of LunarVim...'
+  # Install deps from LunarVim docs.
+  sudo apt update
+  sudo apt install python3-pip python-dev python3-dev python3-pip
+  bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 }
 prompt_user install_neovim "Would you like to install neovim?"
 
