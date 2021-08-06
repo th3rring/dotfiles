@@ -50,3 +50,6 @@ source $install_path/scripts/devimg.sh
 
 # Add Cling to path
 export PATH="$install_path/cling/bin:$PATH"
+
+# Add go bin to path
+export PATH="/home/therring/go/bin:$PATH"
