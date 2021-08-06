@@ -118,49 +118,30 @@ prompt_user install_nerdfonts "Would you like to install Nerdfonts?"
 
 # Install Vundle and install plugins
 # Moved to Neovim, commenting out this.
-# install_vim_plugins () {
-# 	echo 'Installing Vundle and VIM plugins...'
-# 	git clone https://github.com/VundleVim/Vundle.vim.git $USER_HOME/.vim/bundle/Vundle.vim
-# 	rm -f $USER_HOME/.vimrc
-# 	ln -s $INSTALL_PATH/vimrc $USER_HOME/.vimrc
-# 	vim +PluginInstall +qall
-# 	python3 $USER_HOME/.vim/bundle/YouCompleteMe/install.py --clangd-completer
-# }
+install_vim_plugins () {
+	echo 'Installing Vundle and VIM plugins...'
+	git clone https://github.com/VundleVim/Vundle.vim.git $USER_HOME/.vim/bundle/Vundle.vim
+	rm -f $USER_HOME/.vimrc
+	ln -s $INSTALL_PATH/vimrc $USER_HOME/.vimrc
+	vim +PluginInstall +qall
+	python3 $USER_HOME/.vim/bundle/YouCompleteMe/install.py --clangd-completer
+}
 # prompt_user install_vim_plugins "Would you like to install vim plugins?"
 
 # Install Neovim and plugins from personal repo.
-# install_neovim () {
-#   echo 'Installing Neovim from personal repo...'
-#   sudo apt install neovim
-#   bash <(curl -s https://raw.githubusercontent.com/th3rring/nvim/master/utils/install.sh)
-# }
-
 install_neovim () {
-  echo 'Installing Neovim from latest release appimage...'
+  echo 'Installing Neovim 0.5 by moving app image to /usr/bin/nvim...'
   curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
   chmod u+x nvim.appimage
-  ./nvim.appimage --appimage-extract
-  # check_root
+  nvim.appimage --appimage-extract
+  check_root
   sudo mv squashfs-root /
   sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 
-  echo 'Installing latest version of LunarVim...'
-  # Install deps from LunarVim docs.
-  sudo apt update
-  sudo apt install -y python3-pip python-dev python3-dev python3-pip
-
+  echo 'Installing LunarVim from Github...'
   bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 }
 prompt_user install_neovim "Would you like to install neovim?"
-
-install_lazygit () {
-  echo 'Installing Lazygit with Go...'
-  # check_root
-  sudo apt update
-  sudo apt install -y golang-go
-  go get github.com/jesseduffield/lazygit
-}
-prompt_user install_lazygit "Would you like to install lazygit?"
 
 # Install texlive for Neovim support.
 install_latex () {
