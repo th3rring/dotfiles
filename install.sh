@@ -165,7 +165,7 @@ prompt_user install_lazygit "Would you like to install lazygit?"
 # Install texlive for Neovim support.
 install_latex () {
   echo 'Installing Latex...'
-  sudo apt install texlive
+  sudo apt install texlive-full
 }
 prompt_user install_latex "Would you like to install latex?"
 
