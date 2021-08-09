@@ -31,7 +31,7 @@ check_root () {
 }
 
 # Programs on apt to install
-apt_programs='tmux vim sshpass git  htop clang cmake meson ninja-build curl python3-pip'
+apt_programs='tmux vim sshpass git htop clang cmake meson ninja-build curl python3-pip jabref'
 install_apt_progs () {
 	echo "Installing apt programs..."
 	check_root
