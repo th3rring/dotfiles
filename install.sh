@@ -31,11 +31,11 @@ check_root () {
 }
 
 # Programs on apt to install
-apt_programs='tmux vim sshpass git htop clang cmake meson ninja-build curl python3-pip jabref'
+apt_programs='tmux vim sshpass git htop clang cmake meson ninja-build curl python3-pip jabref deja-dup'
 install_apt_progs () {
 	echo "Installing apt programs..."
 	check_root
-	sudo apt install $apt_programs
+	sudo apt install -y $apt_programs
 }
 prompt_user install_apt_progs "Would you like to install apt programs?"
 
@@ -147,7 +147,7 @@ install_neovim () {
   echo 'Installing latest version of LunarVim...'
   # Install deps from LunarVim docs.
   sudo apt update
-  sudo apt install -y python3-pip python-dev python3-dev python3-pip
+  sudo apt install -y python3-pip python-dev python3-dev python3-pip python3.8-venv
 
   bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 }
