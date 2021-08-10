@@ -48,6 +48,7 @@ alias devscripts='cd '$install_path/scripts
 source $install_path/scripts/devcd.sh
 source $install_path/scripts/devimg.sh
 alias xopen='xdg-open'
+alias lg='lazygit'
 
 # Add Cling to path
 export PATH="$install_path/cling/bin:$PATH"
