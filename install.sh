@@ -136,7 +136,8 @@ prompt_user install_nerdfonts "Would you like to install Nerdfonts?"
 # }
 
 install_neovim () {
-  echo 'Installing Neovim from latest release appimage...'
+  # Old installation method.
+  # echo 'Installing Neovim from latest release appimage...'
   # curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
   # chmod u+x nvim.appimage
   # ./nvim.appimage --appimage-extract
@@ -145,17 +146,16 @@ install_neovim () {
   # sudo mv squashfs-root /
   # sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 
+  sudo apt install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl
   git clone https://github.com/neovim/neovim.git $USER_HOME/.neovim
   cd $USER_HOME/.neovim
   sudo make CMAKE_BUILD_TYPE=RelWithDebInfo
   sudo make install
 
   echo 'Installing latest version of LunarVim...'
-  # Install deps from LunarVim docs.
-  sudo apt update
-  sudo apt install -y python3-pip python-dev python3-dev python3-pip python3.8-venv
-
   LVBRANCH=rolling bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/rolling/utils/installer/install.sh)
+
+  echo "Don't forget to run :PackerInstall inside LunarVim!"
 }
 prompt_user install_neovim "Would you like to install neovim?"
 
