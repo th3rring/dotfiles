@@ -4,7 +4,7 @@ install_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 KRL_MACHINE='oceanus'
 
-export VISUAL=nvim
+export VISUAL=lvim
 export EDITOR="$VISUAL"
 
 
@@ -49,6 +49,7 @@ source $install_path/scripts/devcd.sh
 source $install_path/scripts/devimg.sh
 alias xopen='xdg-open'
 alias lg='lazygit'
+alias nvim='lvim'
 
 # Add Cling to path
 export PATH="$install_path/cling/bin:$PATH"

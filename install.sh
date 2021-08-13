@@ -141,6 +141,7 @@ install_neovim () {
   chmod u+x nvim.appimage
   ./nvim.appimage --appimage-extract
   # check_root
+  # TODO: Make this check that there isn't a directory already there.
   sudo mv squashfs-root /
   sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 
@@ -149,7 +150,7 @@ install_neovim () {
   sudo apt update
   sudo apt install -y python3-pip python-dev python3-dev python3-pip python3.8-venv
 
-  bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
+  LVBRANCH=rolling bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/rolling/utils/installer/install.sh)
 }
 prompt_user install_neovim "Would you like to install neovim?"
 
