@@ -147,7 +147,7 @@ install_neovim () {
 
   git clone https://github.com/neovim/neovim.git $USER_HOME/.neovim
   cd $USER_HOME/.neovim
-  make CMAKE_BUILD_TYPE=RelWithDebInfo
+  sudo make CMAKE_BUILD_TYPE=RelWithDebInfo
   sudo make install
 
   echo 'Installing latest version of LunarVim...'
