@@ -31,7 +31,7 @@ check_root () {
 }
 
 # Programs on apt to install
-apt_programs='tmux vim sshpass git htop clang cmake meson ninja-build curl python3-pip jabref deja-dup'
+apt_programs='tmux vim sshpass git htop clang clang-tidy cmake meson ninja-build curl python3-pip jabref deja-dup'
 install_apt_progs () {
 	echo "Installing apt programs..."
 	check_root
@@ -137,13 +137,18 @@ prompt_user install_nerdfonts "Would you like to install Nerdfonts?"
 
 install_neovim () {
   echo 'Installing Neovim from latest release appimage...'
-  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-  chmod u+x nvim.appimage
-  ./nvim.appimage --appimage-extract
-  # check_root
-  # TODO: Make this check that there isn't a directory already there.
-  sudo mv squashfs-root /
-  sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
+  # curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+  # chmod u+x nvim.appimage
+  # ./nvim.appimage --appimage-extract
+  # # check_root
+  # # TODO: Make this check that there isn't a directory already there.
+  # sudo mv squashfs-root /
+  # sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
+
+  git clone https://github.com/neovim/neovim.git $USER_HOME/.neovim
+  cd $USER_HOME/.neovim
+  make CMAKE_BUILD_TYPE=RelWithDebInfo
+  sudo make install
 
   echo 'Installing latest version of LunarVim...'
   # Install deps from LunarVim docs.
