@@ -152,7 +152,11 @@ install_neovim () {
   sudo make CMAKE_BUILD_TYPE=RelWithDebInfo
   sudo make install
 
+  echo "Cloning in LunarVim config repo..."
+  git clone https://github.com/th3rring/lvim.git $USER_HOME/.config/lvim
+
   echo 'Installing latest version of LunarVim...'
+  sudo apt install -y python3-pip python-dev python3-dev python3.8-venv
   LVBRANCH=rolling bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/rolling/utils/installer/install.sh)
 
   echo "Don't forget to run :PackerInstall inside LunarVim!"
