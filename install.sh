@@ -1,5 +1,5 @@
 #!/bin/bash
-# Thomas Herring 2021.
+# Thomas Herring 2021
 
 printf '###### Setting up preferences ######\n\n\n'
 

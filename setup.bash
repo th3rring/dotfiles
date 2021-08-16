@@ -1,4 +1,6 @@
 #!/bin/bash
+# Thomas Herring 2021
+
 # Make this variable local to this file so it's not an env var
 install_path="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -9,10 +11,10 @@ export EDITOR="$VISUAL"
 
 
 # For the Rice VPN
-if [ -d "/opt/cisco/anyconnect" ]
-then
-	alias vpn=/opt/cisco/anyconnect/bin/vpn
-fi
+# if [ -d "/opt/cisco/anyconnect" ]
+# then
+# 	alias vpn=/opt/cisco/anyconnect/bin/vpn
+# fi
 
 # Copied from https://dchua.com/2014/07/15/x11-forwarding-over-remote-ssh-tmux/
 # -- Improved X11 forwarding through GNU Screen (or tmux).
@@ -40,13 +42,19 @@ preexec() {
 }
 trap 'preexec' DEBUG
 
-alias kl-ssh='sshpass -p "*******" ssh -o StrictHostKeyChecking=no therring@'$KRL_MACHINE'.cs.rice.edu -Y'
-# alias dmux=$install_path'/dev-tmux.sh'
-alias devupdate='git -C '$install_path' pull && sudo bash '$install_path'/suckless/update.sh && bash '$install_path'/statusbar/link.sh'
-alias devdotfiles='cd '$install_path
+# Old command to auto ssh into a kl machine.
+# alias kl-ssh='sshpass -p "*******" ssh -o StrictHostKeyChecking=no therring@'$KRL_MACHINE'.cs.rice.edu -Y'
+
+# Command to build and install all suckless tools.
+# alias devupdate='git -C '$install_path' pull && sudo bash '$install_path'/suckless/update.sh && bash '$install_path'/statusbar/link.sh'
+alias devupdate='git -C '$install_path' pull'
+alias devdot='cd '$install_path
 alias devscripts='cd '$install_path/scripts
+alias devbuilder='kl-builder'
+
 source $install_path/scripts/devcd.sh
-source $install_path/scripts/devimg.sh
+source $install_path/scripts/devvpn.sh
+
 alias xopen='xdg-open'
 alias lg='lazygit'
 alias nvim='lvim'
