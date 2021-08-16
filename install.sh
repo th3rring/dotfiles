@@ -153,7 +153,21 @@ install_neovim () {
   sudo make install
 
   echo 'Installing latest version of LunarVim...'
+  sudo apt install -y python3-pip python-dev python3-dev python3.8-venv
   LVBRANCH=rolling bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/rolling/utils/installer/install.sh)
+
+  # Checking if user has already added personal config.
+  if [ ! -d $USER_HOME/.config/lvim/.git/ ]; then
+
+    # If not, remove existing config and clone new one.
+    echo "Deleting default lvim config..."
+    rm -rf $USER_HOME/.config/lvim
+
+    echo "Cloning in LunarVim config repo..."
+    git clone https://github.com/th3rring/lvim.git $USER_HOME/.config/lvim
+  else
+    echo "Lvim settings already replaced... Manually change if necessary"
+  fi
 
   echo "Don't forget to run :PackerInstall inside LunarVim!"
 }
