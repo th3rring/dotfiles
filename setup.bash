@@ -49,6 +49,7 @@ trap 'preexec' DEBUG
 # alias devupdate='git -C '$install_path' pull && sudo bash '$install_path'/suckless/update.sh && bash '$install_path'/statusbar/link.sh'
 alias devupdate='git -C '$install_path' pull'
 alias devdot='cd '$install_path
+alias devnvim='cd '$install_path/../lvim
 alias devscripts='cd '$install_path/scripts
 alias devbuilder='kl-builder'
 
