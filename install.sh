@@ -86,6 +86,11 @@ install_suckless () {
         ln -sfn "$INSTALL_PATH/picom.conf" $picom_loc
 
         bash $INSTALL_PATH/statusbar/link.sh
+
+        if ! command -v gsettings &> /dev/null
+        then
+          gsettings set org.gnome.desktop.default-applications.terminal exec st
+        fi
 }
 prompt_user install_suckless "Would you like to install Suckless tools?"
 
