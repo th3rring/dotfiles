@@ -52,6 +52,7 @@ alias devdot='cd '$install_path
 alias devnvim='cd '$install_path/../lvim
 alias devscripts='cd '$install_path/scripts
 alias devbuilder='kl-builder'
+alias downloads='cd ~/Downloads'
 
 source $install_path/scripts/devcd.sh
 source $install_path/scripts/devvpn.sh
