@@ -56,6 +56,7 @@ alias downloads='cd ~/Downloads'
 
 source $install_path/scripts/devcd.sh
 source $install_path/scripts/devvpn.sh
+source $install_path/scripts/create_ros_ws.sh
 
 alias xopen='xdg-open'
 alias lg='lazygit'
