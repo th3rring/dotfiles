@@ -67,3 +67,6 @@ export PATH="$install_path/cling/bin:$PATH"
 
 # Add go bin to path
 export PATH="/home/therring/go/bin:$PATH"
+
+# Add Lvim to path
+export PATH="/home/therring/.local/bin/:$PATH"

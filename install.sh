@@ -157,8 +157,15 @@ install_neovim () {
   sudo make CMAKE_BUILD_TYPE=RelWithDebInfo
   sudo make install
 
+  echo 'Checking if Lunarvim has been installed already...'
+  if [ ! -d $USER_HOME/.local/share/lunarvim/lvim/utils/installer/ ]; then
+	  echo 'Uninstalling...'
+	  bash $USER_HOME/.local/share/lunarvim/lvim/utils/installer/uninstall.sh
+  fi
+
   echo 'Installing latest version of LunarVim...'
   sudo apt install -y python3-pip python-dev python3-dev python3.8-venv
+  sudp apt install -y cargo npm composer php julia default-jre xclip
   LVBRANCH=rolling bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/rolling/utils/installer/install.sh)
 
   # Checking if user has already added personal config.
@@ -174,7 +181,7 @@ install_neovim () {
     echo "Lvim settings already replaced... Manually change if necessary"
   fi
 
-  echo "Don't forget to run :PackerInstall inside LunarVim!"
+  echo "Don't forget to run :PackerInstall and :PackerSync inside LunarVim!"
 }
 prompt_user install_neovim "Would you like to install neovim?"
 
