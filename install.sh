@@ -31,7 +31,7 @@ check_root () {
 }
 
 # Programs on apt to install
-apt_programs='tmux vim sshpass git htop clang clang-tidy cmake meson ninja-build curl python3-pip jabref deja-dup'
+apt_programs='tmux vim sshpass git htop clang clang-tidy cmake meson ninja-build curl python3-pip deja-dup'
 install_apt_progs () {
 	echo "Installing apt programs..."
 	check_root
@@ -40,7 +40,7 @@ install_apt_progs () {
 prompt_user install_apt_progs "Would you like to install apt programs?"
 
 
-pip_programs='ranger-fm'
+pip_programs='ranger-fm rocker'
 install_pip_progs () {
 	echo "Installing pip programs..."
 	pip3 install $pip_programs --user
@@ -105,21 +105,49 @@ install_chrome () {
 prompt_user install_chrome "Would you like to install Google Chrome?"
 
 # Add nerdfont install
-install_nerdfonts () {
-	echo 'Installing Nerdfonts...'
+install_fonts () {
+	echo 'Installing fonts...'
 	git clone https://github.com/ryanoasis/nerd-fonts.git $INSTALL_PATH/nerd-fonts
 
         # If we're running as root, make sure to install as user.
 	if [ $USER = 'root' ]
 	then
           sudo -u $SUDO_USER bash $INSTALL_PATH/nerd-fonts/install.sh
+          echo 'Installing Jetbrains mono'
+          sudo apt install fonts-jetbrains-mono
         else
           bash $INSTALL_PATH/nerd-fonts/install.sh
 	fi
 
-        rm -rf $INSTALL_PATH/nerd-fonts
+  rm -rf $INSTALL_PATH/nerd-fonts
+
+  wget -O $INSTALL_PATH/JetBrainsMono-2.242.zip https://download.jetbrains.com/fonts/JetBrainsMono-2.242.zip
+  unzip JetBrainsMono-2.242.zip
+
+  # If we're running as root, make sure to install as user.
+	if [ $USER = 'root' ]
+	then
+          sudo mv fonts/ttf/JetBrainsMono-*.ttf /usr/share/fonts/
+        else
+          mv fonts/ttf/JetBrainsMono-*.ttf $HOME/.local/share/fonts/
+	fi
+
+  rm -rf $INSTALL_PATH/JetBrainsMono-2.242
+
+  # If we're running as root, make sure to install as user.
+	if [ $USER = 'root' ]
+	then
+          sudo mv fonts/ttf/JetBrainsMono-*.ttf /usr/share/fonts/
+          sudo cp fonts/AppleColorEmoji.ttf /usr/share/fonts/
+        else
+          mv fonts/ttf/JetBrainsMono-*.ttf $HOME/.local/share/fonts/
+          mv fonts/AppleColorEmoji.ttf $HOME/.local/share/fonts/
+	fi
+
+  rm -rf $INSTALL_PATH/JetBrainsMono-2.242
+
 }
-prompt_user install_nerdfonts "Would you like to install Nerdfonts?"
+prompt_user install_fonts "Would you like to install fonts?"
 
 # Install Vundle and install plugins
 # Moved to Neovim, commenting out this.
