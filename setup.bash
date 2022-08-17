@@ -56,6 +56,7 @@ alias downloads='cd ~/Downloads'
 
 source $install_path/scripts/devcd.sh
 source $install_path/scripts/devvpn.sh
+source $install_path/scripts/create_ros_ws.sh
 
 alias xopen='xdg-open'
 alias lg='lazygit'
@@ -66,3 +67,6 @@ export PATH="$install_path/cling/bin:$PATH"
 
 # Add go bin to path
 export PATH="/home/therring/go/bin:$PATH"
+
+# Add Lvim to path
+export PATH="/home/therring/.local/bin/:$PATH"
